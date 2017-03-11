@@ -26,7 +26,7 @@ module.exports.displayLogin = (req, res) => {
 module.exports.processLogin = () => {
     return passport.authenticate('local', {
       successRedirect: '/games',
-      failureRedirect: '/login',
+      failureRedirect: '/users/login',
       failureFlash: true
   });
 }
@@ -82,7 +82,7 @@ module.exports.processRegistration = (req, res) => {
 module.exports.requireAuth = (req, res, next) => {
   // check if the user is logged in
   if(!req.isAuthenticated()) {
-    return res.redirect('/login');
+    return res.redirect('/users/login');
   }
   next();
 }
